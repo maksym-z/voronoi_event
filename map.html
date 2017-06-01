@@ -5,7 +5,10 @@
 <canvas id="myCanvas" width="400" height="800" style="border:1px solid #d3d3d3;">
 Your browser is bad and you should feel bad.</canvas>
 
-
+<!--
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+-->
+<script src="jquery-3.2.1.min.js"></script>
 <script src = "geography.sqf"></script>
 <script>
 
@@ -23,8 +26,60 @@ for (var i=0; i <  voronoi_ridge_vertices.length;i++) {
 	};
 };
 
+var highlightPolygon = function (polygon_index, highlight) {
+	ctx.beginPath();
+	var len = voronoi_regions[polygon_index].length;
+	for (var i = 0; i < len; i++) {
+		pnt1 = voronoi_regions[polygon_index][i];
+		var j;
+		if (i<len-1) {
+			j = i+1;
+		} else {
+			j=0;
+		};
+		pnt2 = voronoi_regions[polygon_index][j];
+		if (pnt1 != -1 && pnt2 != -1) {
+			ctx.moveTo(voronoi_vertices[pnt1][0]*SCALE, voronoi_vertices[pnt1][1]*SCALE);
+			ctx.lineTo(voronoi_vertices[pnt2][0]*SCALE, voronoi_vertices[pnt2][1]*SCALE);
+		};
+	};
+	if (highlight) {
+		ctx.fillStyle = "blue";
+	} else {	
+		ctx.fillStyle = "white";
+	};
+	ctx.strokeStyle= "rgb(" + (255/(i+1)) + "," + (255/(j+1)) + ",100)";
+	ctx.closePath();
+	ctx.stroke();
+	ctx.fill();
+	
+};
+
+var findPolygon = function (x,y){
+	var dmin = 1000000;
+	var return_polygon_index;
+	for (var i = 0; i < voronoi_points.length; i++) {
+		var newdist = (voronoi_points[i][0]*SCALE-x)^2 + (voronoi_points[i][1]*SCALE-y)^2;
+		if (newdist < dmin) {
+			return_polygon_index = i;
+			dmin = newdist;
+		};
+	};
+	return return_polygon_index;
+};
 
 ctx.stroke();
+
+$(document).ready(function(){
+    $("canvas").on("mousemove", function(event){
+		var x = event.pageX - c.offsetLeft;
+		var	y = event.pageY - c.offsetTop;
+		//ctx.lineTo(x, y);
+		//ctx.stroke();
+        highlightPolygon(findPolygon(x, y),true);
+    });
+	highlightPolygon(6,true);
+});
 
 </script>
 </body>
