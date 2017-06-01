@@ -86,6 +86,21 @@ bn_fnc_export_points = {
 		_points pushBack ((getPos _x) select [0,2])
 	} forEach (allMissionObjects "Flag_Red_F");
 	copyToClipboard (str _points);
+	hint "Points exported to clipboard.";
 };
+
+bn_fnc_export_geography = {
+	private _export_string = format[
+		"voronoi_vertices = %1; /n voronoi_regions = %2; /n voronoi_ridge_vertices = %3; voronoi_ridge_points = %4; voronoi_points = %5;",
+		str voronoi_vertices,
+		str voronoi_regions,
+		str voronoi_ridge_vertices,
+		str voronoi_ridge_points,
+		str voronoi_points
+	];
+	copyToClipboard (_export_string);
+	hint "Geography exported to clipboard.";
+};
+
 
 [] call compile preprocessFileLineNumbers "click_processor.sqf";
