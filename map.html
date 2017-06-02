@@ -2,6 +2,7 @@
 <html>
 <body>
 
+<p>Debug</p>
 <canvas id="myCanvas" width="400" height="800" style="border:1px solid #d3d3d3;">
 Your browser is bad and you should feel bad.</canvas>
 
@@ -11,12 +12,64 @@ Your browser is bad and you should feel bad.</canvas>
 <script src="jquery-3.2.1.min.js"></script>
 <script src = "geography.sqf"></script>
 <script>
-
+var SCALE = 0.05;
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
+var polygons = [];
+
+this.ridge = function(ridge_index, neighbor, x1, y1, x2, y2) {
+	this.ridge_index = ridge_index;
+	this.x1 = x1;
+	this.x2 = x2;
+	this.y1 = y1;
+	this.y2 = y2;
+	this.neighbor = neighbor;
+};
+
+var polygon = function(index) {
+
+	this.index = index;
+	this.x = voronoi_points[index][0]*SCALE;
+	this.y = voronoi_points[index][1]*SCALE;
+	this.ridges = [];
+	
+	for (var i = 0; i < voronoi_ridge_points.length; i++) {
+		$("p").text([voronoi_ridge_vertices[i][0]]);
+		if ([voronoi_ridge_vertices[i][0]]!=-1 && [voronoi_ridge_vertices[i][1]]!=-1) {
+			var x1 = voronoi_vertices[voronoi_ridge_vertices[i][0]][0];
+			var y1 = voronoi_vertices[voronoi_ridge_vertices[i][0]][1];
+			var x2 = voronoi_vertices[voronoi_ridge_vertices[i][1]][0];
+			var y2 = voronoi_vertices[voronoi_ridge_vertices[i][1]][1];
+			if (voronoi_ridge_points[i][0] == this.index) {
+				this.ridges.push(new ridge(i,voronoi_ridge_points[i][1],x1,y1,x2,y2));
+			} else if (voronoi_ridge_points[i][1] == this.index) {
+				this.ridges.push(new ridge(i,voronoi_ridge_points[i][0],x1,y1,x2,y2));
+			};
+		};
+	};
+	
+	this.highlight = function (highlight) {
+		ctx.beginPath();
+		var len = this.ridges.length;
+		for (var i = 0; i < len; i++) {
+			ctx.moveTo(this.ridges[i].x1*SCALE, this.ridges[i].y1*SCALE);
+			ctx.lineTo(this.ridges[i].x2*SCALE, this.ridges[i].y2*SCALE);
+		};
+		if (highlight) {
+			ctx.strokeStyle = "yellow";
+		} else {	
+			ctx.strokeStyle = "black";
+		};
+		ctx.closePath();
+		ctx.stroke();
+		highlightedPolygon = this;
+	};
+	
+};
+
+var highlightedPolygon;
 ctx.beginPath();
-var SCALE = 0.05;
-alert (voronoi_ridge_vertices.length);
+
 for (var i=0; i <  voronoi_ridge_vertices.length;i++) {
 	pnt1 = voronoi_ridge_vertices[i][0];
 	pnt2 = voronoi_ridge_vertices[i][1];
@@ -26,49 +79,28 @@ for (var i=0; i <  voronoi_ridge_vertices.length;i++) {
 	};
 };
 
-var highlightPolygon = function (polygon_index, highlight) {
-	ctx.beginPath();
-	var len = voronoi_regions[polygon_index].length;
-	for (var i = 0; i < len; i++) {
-		pnt1 = voronoi_regions[polygon_index][i];
-		var j;
-		if (i<len-1) {
-			j = i+1;
-		} else {
-			j=0;
-		};
-		pnt2 = voronoi_regions[polygon_index][j];
-		if (pnt1 != -1 && pnt2 != -1) {
-			ctx.moveTo(voronoi_vertices[pnt1][0]*SCALE, voronoi_vertices[pnt1][1]*SCALE);
-			ctx.lineTo(voronoi_vertices[pnt2][0]*SCALE, voronoi_vertices[pnt2][1]*SCALE);
-		};
-	};
-	if (highlight) {
-		ctx.fillStyle = "blue";
-	} else {	
-		ctx.fillStyle = "white";
-	};
-	ctx.strokeStyle= "rgb(" + (255/(i+1)) + "," + (255/(j+1)) + ",100)";
-	ctx.closePath();
-	ctx.stroke();
-	ctx.fill();
-	
-};
-
 var findPolygon = function (x,y){
-	var dmin = 1000000;
+	var dmin = 10000000;
 	var return_polygon_index;
 	for (var i = 0; i < voronoi_points.length; i++) {
-		var newdist = (voronoi_points[i][0]*SCALE-x)^2 + (voronoi_points[i][1]*SCALE-y)^2;
-		if (newdist < dmin) {
+		var newdist = Math.pow(voronoi_points[i][0]*SCALE-x, 2) + Math.pow((voronoi_points[i][1]*SCALE-y),2);
+		if (newdist < dmin && newdist > 0) {
 			return_polygon_index = i;
 			dmin = newdist;
 		};
 	};
-	return return_polygon_index;
+	$("p").text(dmin);
+	//ctx.strokeStyle = "black";
+	//ctx.moveTo(x,y);
+	//ctx.lineTo(voronoi_points[return_polygon_index][0]*SCALE,voronoi_points[return_polygon_index][1]*SCALE);
+	//ctx.stroke();
+	return polygons[return_polygon_index];
 };
 
-ctx.stroke();
+for (var i = 0; i<voronoi_points.length; i++) {
+	polygons.push(new polygon(i));
+}
+highlightedPolygon = polygons[0];
 
 $(document).ready(function(){
     $("canvas").on("mousemove", function(event){
@@ -76,11 +108,12 @@ $(document).ready(function(){
 		var	y = event.pageY - c.offsetTop;
 		//ctx.lineTo(x, y);
 		//ctx.stroke();
-        highlightPolygon(findPolygon(x, y),true);
+		highlightedPolygon.highlight(false);
+        findPolygon(x, y).highlight(true);
     });
-	highlightPolygon(6,true);
 });
 
 </script>
+
 </body>
 </html>
