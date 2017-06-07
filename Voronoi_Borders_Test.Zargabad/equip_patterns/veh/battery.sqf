@@ -1,0 +1,18 @@
+private ["_veh"];
+_veh = _this select 0;
+clearItemCargoGlobal _veh;
+clearMagazineCargoGlobal _veh;
+clearWeaponCargoGlobal _veh;
+clearBackpackCargoGlobal _veh;
+_veh addBackpackCargoGlobal ["rhs_sidor",2];
+_veh addMagazineCargoGlobal ["rhs_30Rnd_545x39_AK",8];
+_veh addMagazineCargoGlobal ["rhs_30Rnd_545x39_AK_green",8];
+_veh addMagazineCargoGlobal ["rhs_100Rnd_762x54mmR",4];
+_veh addItemCargoGlobal ["ACE_EntrenchingTool",2];
+_veh addWeaponCargoGlobal ["rhs_weap_pkm",1];
+_veh addWeaponCargoGlobal ["rhs_weap_rpg7",1];
+_veh addItemCargoGlobal ["rhs_acc_pgo7v2",1];
+_veh addItemCargoGlobal ["tu_arty_tables_d30",1];
+_veh addItemCargoGlobal ["rhs_rpg7_PG7VL_mag",3];
+_veh addItemCargoGlobal ['Chemlight_green',6];
+_veh addItemCargoGlobal ['Chemlight_red',6];

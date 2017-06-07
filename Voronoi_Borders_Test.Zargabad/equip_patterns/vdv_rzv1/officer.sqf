@@ -1,0 +1,21 @@
+if (!isServer) exitWith {};
+_unit = _this select 0;
+
+[_unit] call bn_equip_vdv_rzv1_soldier_base;
+_unit addItemToUniform 'ACE_MapTools';
+_unit addItemToUniform 'ACE_EarPlugs';
+_unit addVest 'rhs_6b23_digi_6sh92_headset_mapcase';
+for '_i' from 1 to 4 do {_unit addItemToVest 'rhs_30Rnd_545x39_7N22_AK';};
+for '_i' from 1 to 2 do {_unit addItemToVest 'rhs_30Rnd_545x39_AK_green';};
+for '_i' from 1 to 2 do {_unit addItemToVest 'rhs_mag_rgo';};
+for '_i' from 1 to 2 do {_unit addItemToVest 'rhs_mag_rdg2_white';};
+_unit addHeadgear 'rhs_fieldcap_digi';
+_unit addWeapon 'rhs_weap_ak74m';
+_unit addPrimaryWeaponItem 'rhs_acc_dtk';
+_unit addWeapon 'rhs_weap_tr8';
+_unit linkItem 'ItemMap';
+_unit linkItem 'ItemCompass';
+_unit linkItem 'tf_microdagr';
+_unit linkItem 'ItemGPS';
+_unit addBackpack 'tf_bussole';
+[_unit] call bn_equip_vdv_rzv1_ace_med;

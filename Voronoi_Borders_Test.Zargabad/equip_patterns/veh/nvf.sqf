@@ -1,0 +1,17 @@
+private ["_veh"];
+_veh = _this select 0;
+clearItemCargoGlobal _veh;
+clearMagazineCargoGlobal _veh;
+clearWeaponCargoGlobal _veh;
+clearBackpackCargoGlobal _veh;
+_veh addMagazineCargoGlobal ["rhs_rpg7_PG7VL_mag",2];
+_veh addMagazineCargoGlobal ["rhs_rpg7_OG7V_mag",3];
+_veh addItemCargoGlobal ["ACE_EntrenchingTool",1];
+_veh addItemCargoGlobal ['pzn_f1',12];
+_veh addItemCargoGlobal ["ACE_elasticBandage",8];
+_veh addItemCargoGlobal ["ACE_packingBandage",8];
+_veh addItemCargoGlobal ["ACE_quikclot",8];
+_veh addItemCargoGlobal ["ACE_fieldDressing",8];
+_veh addItemCargoGlobal ["ACE_tourniquet",8];
+_veh addItemCargoGlobal ["ACE_morphine",8];
+_veh addBackpackCargoGlobal ["rhs_sidor",2];

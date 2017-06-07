@@ -1,0 +1,98 @@
+﻿//enableDebugConsole = 1;
+#include "SerP\header.hpp"
+
+class SerP_const {
+	#include "const.hpp"
+};
+class Params {
+#include "SerP\params_default.hpp"
+//здесь можно описать дополнительные параметры игры
+};
+loadscreen = "pics\load.jpg";
+
+class CfgFunctions
+{
+	class bn
+	{
+		class myCategory
+		{
+			class const_preInit {
+				file = "platformium\const.sqf";
+				preInit = 1;
+			};
+			
+			class fn_preInit {
+				file = "preinit_functions.sqf";
+				preInit = 1;
+			};
+			
+			class voronoi {
+				file = "voronoi_functions.sqf";
+				preInit = 1;
+			};
+		};
+	};
+};
+
+enableDebugConsole = 1;
+
+#include "dynamis\defines.hpp"
+#include "SerP\bn_freezetime\interface.hpp"
+#define BN_GUI_GRID_X	(0)
+#define BN_GUI_GRID_Y	(0)
+#define BN_GUI_GRID_W	(0.03)
+#define BN_GUI_GRID_H	(0.04)
+
+class ks_interface
+{    
+	idd = 1503;
+	duration = 1;
+	class controls
+	{
+		class RscText_1000: bn_RscText
+		{
+			idc = 1000;
+			text = "Выбери средство усиления:"; //--- ToDo: Localize;
+			x = 13 * BN_GUI_GRID_W + BN_GUI_GRID_X;
+			y = 0.5 * BN_GUI_GRID_H + BN_GUI_GRID_Y;
+			w = 14 * BN_GUI_GRID_W;
+			h = 2.5 * BN_GUI_GRID_H;
+			colorText[] = {1,1,1,1};
+			colorBackground[] = {0,0,0,1};
+			sizeEx = 1 * BN_GUI_GRID_H;
+		};
+		class RscCombo_2100: bn_RscCombo
+		{
+			idc = 2100;
+			x = 13 * BN_GUI_GRID_W + BN_GUI_GRID_X;
+			y = 3 * BN_GUI_GRID_H + BN_GUI_GRID_Y;
+			w = 14 * BN_GUI_GRID_W;
+			h = 1.5 * BN_GUI_GRID_H;
+			sizeEx = 1 * BN_GUI_GRID_H;
+		};
+		class RscButtonMenuOK_2600: bn_RscButton
+		{
+			idc = 2600;
+			x = 28.5 * BN_GUI_GRID_W + BN_GUI_GRID_X;
+			y = 1 * BN_GUI_GRID_H + BN_GUI_GRID_Y;
+			w = 4 * BN_GUI_GRID_W;
+			h = 1.5 * BN_GUI_GRID_H;
+			colorText[] = {1,1,1,1};
+			colorBackground[] = {0,0,0,1};
+			text="OK";
+			onButtonClick = "closeDialog 1; [lbData [2100, lbCurSel 2100], uiNamespace getVariable 'bn_current_box'] remoteExecCall ['bn_fnc_fill_box', 2, false];";
+		};
+		class RscButtonMenuCancel_2700: bn_RscButton
+		{
+			idc = 2700;
+			x = 28.5 * BN_GUI_GRID_W + BN_GUI_GRID_X;
+			y = 3 * BN_GUI_GRID_H + BN_GUI_GRID_Y;
+			w = 4 * BN_GUI_GRID_W;
+			h = 1.5 * BN_GUI_GRID_H;
+			colorText[] = {1,1,1,1};
+			colorBackground[] = {0,0,0,1};
+			text="Отмена";
+			onButtonClick = "closeDialog 2;";
+		};
+	};
+};

@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ID="Arma2">
+  <Package ID="Missions">
+    <Container ID="SerP">
+<!-- Название миссии -->
+ 	<Key ID="STR_SerP_missionname">
+		<Original>
+		Берлога
+		</Original>
+	</Key> 
+ 	<Key ID="STR_SerP_author">
+		<Original>
+		[ODK]Bn_
+		</Original>
+	</Key> 
+ 	<Key ID="STR_SerP_missionDescription">
+		<Original>
+		Спецназ должен уничтожить лагерь террористов и ликвидировать главаря банды.
+		</Original>
+	</Key> 
+<!-- информация для всех -->
+ 	<Key ID="STR_SerP_brief">
+		<Original>
+		</Original>
+	</Key> 
+ 	<Key ID="STR_SerP_changes">
+		<Original>
+		</Original>
+	</Key> 
+	<Key ID="STR_SerP_credits">
+		<Original>
+		Автор миссии: [ODK]Bn_&lt;br/&gt;
+		</Original>
+	</Key>
+	<Key ID="STR_SerP_convent">
+		<Original>
+		Задача красных - зачистить лагерь террористов и ликвидировать главаря. Подробнее - см. новую вкладку условностей.
+		</Original>
+	</Key>
+<!-- информация для прессы -->
+	<Key ID="STR_SerP_situation_tv">
+		<Original>
+		Описание ситуации для прессы.
+		</Original>
+	</Key>
+<!-- информация для bluefor -->
+	<Key ID="STR_SerP_situation_bf">
+		<Original>
+		Короче, силовики нашли нашу базу и готовятся к штурму.
+		</Original>
+	</Key>
+	<Key ID="STR_SerP_task_bf">
+		<Original>
+		Не допустить захвата лагеря и гибели главаря группировки. Если сопротивление окажется бесполезным, главный может попытаться сбежать (см. условности), в таком случае необходимо обеспечить его безопасное прибытие в точку эвакуации.
+		</Original>
+	</Key>
+	<Key ID="STR_SerP_execution_bf">
+		<Original>
+		Оставьте КСу какой-нибудь транспорт на случай побега.
+		</Original>
+	</Key>
+	<Key ID="STR_SerP_machinery_bf">
+		<Original>
+		Автомобили, 1 средство усиления на выбор (АГС, СПГ, ПП мины, "Корды", стационарная ЗУ-23). Если выбрать ЗУ, она появится на определённой картоделом точке и будет отмечена на карте; далеко не всегда ЗУ будет удачным выбором (например, в лесу или в низине толку от неё мало).
+		</Original>
+	</Key>
+	<Key ID="STR_SerP_enemy_bf">
+		<Original>
+		Спецназ на "Тиграх" и отделение ВВшников на БТР-80.
+		</Original>
+	</Key>
+<!-- информация для redfor -->
+<!-- информация для независимых -->
+	<Key ID="STR_SerP_situation_rf">
+		<Original>
+		По результатам оперативной работы мы выявили лагерь крупной банды боевиков. Пока есть возможность накрыть всю банду в лагере, мы спешно подготовили штурм. В усиление получили отделение вованов и их БТР-80.
+		</Original>
+	</Key>
+	<Key ID="STR_SerP_task_rf">
+		<Original>
+		Зачистить территорию лагеря и убить главаря. В случае побега главаря преследовать его и уничтожить.
+		</Original>
+	</Key>
+	<Key ID="STR_SerP_machinery_rf">
+		<Original>
+		Средство усиления (ПНВ, одноразовый гранатомет, пулемет, снайперская винтовка и т.д.) на выбор КСа.
+		</Original>
+	</Key>
+	<Key ID="STR_SerP_execution_rf">
+		<Original>
+		Чтобы выбрать средство усиления, командир стороны должен на фризе подойти к соответствующему ящику и выполнить действие при помощи колёсика мыши.
+		</Original>
+	</Key>
+	<Key ID="STR_SerP_enemy_rf">
+		<Original>
+		Банда численностью около 25 человек, могут иметь тяжёлое вооружение, включая зенитную установку.
+		</Original>
+	</Key>
+    </Container>
+  </Package>
+</Project>

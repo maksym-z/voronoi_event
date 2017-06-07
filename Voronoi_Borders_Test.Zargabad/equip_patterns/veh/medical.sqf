@@ -1,0 +1,16 @@
+private ["_veh"];
+_veh = _this select 0;
+clearItemCargoGlobal _veh;
+clearMagazineCargoGlobal _veh;
+clearWeaponCargoGlobal _veh;
+clearBackpackCargoGlobal _veh;
+_veh addItemCargoGlobal ["ACE_bloodIV",30];
+_veh addItemCargoGlobal ["ACE_plasmaIV",30];
+_veh addItemCargoGlobal ["ACE_elasticBandage",30];
+_veh addItemCargoGlobal ["ACE_packingBandage",30];
+_veh addItemCargoGlobal ["ACE_quikclot",30];
+_veh addItemCargoGlobal ["ACE_fieldDressing",30];
+_veh addItemCargoGlobal ["ACE_tourniquet",30];
+_veh addItemCargoGlobal ["ACE_morphine",30];
+_veh addItemCargoGlobal ['ACE_surgicalKit', 1];
+_veh addItemCargoGlobal ['ACE_personalAidKit', 1];

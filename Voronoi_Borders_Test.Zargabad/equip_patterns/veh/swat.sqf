@@ -1,0 +1,14 @@
+private ["_veh"];
+_veh = _this select 0;
+clearItemCargoGlobal _veh;
+clearMagazineCargoGlobal _veh;
+clearWeaponCargoGlobal _veh;
+clearBackpackCargoGlobal _veh;
+_veh addItemCargoGlobal ["ACE_salineIV",2];
+_veh addItemCargoGlobal ["ACE_wirecutter",1];
+_veh addItemCargoGlobal ["ACE_DefusalKit",1];
+_veh addItemCargoGlobal ["ACE_packingBandage",5];
+_veh addItemCargoGlobal ["ACE_morphine",5];
+_veh addItemCargoGlobal ["Chemlight_green",10];
+_veh addBackpackCargoGlobal ["TRYK_B_Kitbag_blk",1];
+_veh addBackpackCargoGlobal ["ACE_TacticalLadder_Pack",1];
