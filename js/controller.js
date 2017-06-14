@@ -7,6 +7,10 @@ var controller = function() {
 		this.view.addPolygon(freeIndex);
 		return freeIndex;
 	}
+	
+	this.selectSector = function(index) {
+		$("#sector_info").text(JSON.stringify(this.model.sectors[index]));
+	};
 
 	for (var i = 0; i < voronoi_points.length; i++) {
 		this.createSector(i);

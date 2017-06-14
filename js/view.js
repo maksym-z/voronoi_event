@@ -98,9 +98,10 @@ var mapView = function(myController) {
 			this.highlightedPolygon.highlight(false);
 		};
 		var targetedPolygon = this.findPolygon(x, y);
-		$("#debug").text(targetedPolygon.index);
+		
 		if (targetedPolygon)  {
 			targetedPolygon.highlight(true);
+			this.highlightedPolygon = targetedPolygon;
 		};
 	};
 
@@ -110,4 +111,11 @@ var mapView = function(myController) {
 		this.polygons.push(newPolygon);
 	};
 	this.highlightedPolygon = this.polygons[0];
+	
+	this.onMouseClick = function() {
+		$("#debug").text(this.highlightedPolygon.index);
+		if (this.highlightedPolygon) {
+			myController.selectSector(this.highlightedPolygon.index);
+		};
+	};
 };
