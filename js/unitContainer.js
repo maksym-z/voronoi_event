@@ -16,7 +16,7 @@ var unitContainer = function(currentSectorIndex) {
 		returns a list of units
 	*/
 	this.traversePreOrder = function(list, select, subordinationLevel) {
-		for (int i=0; i < this.units.length(); i++) {
+		for (var i=0; i < this.units.length; i++) {
 			currentUnit = this.units[i];
 			list.push(currentUnit);
 		};

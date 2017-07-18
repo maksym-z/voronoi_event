@@ -18,7 +18,7 @@
 -->
 <script src="jquery-3.2.1.min.js"></script>
 <script src = "geography.sqf"></script>
-<script src = "progress.sqf"></script>
+<script src = "js/progress.sqf"></script>
 <script src = "js/unitContainer.js"></script>
 <script src = "js/model.js"></script>
 <script src = "js/view.js"></script>
@@ -38,8 +38,15 @@ $(document).ready(function(){
 	$("canvas" ).click(function() {
 		mainController.view.onMouseClick()
 	});
+	
+	var c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+    var img=document.getElementById("map");
+    ctx.drawImage(img,5,15,400,400);
+
 });
 
 </script>
+<img id="map" src="map.png">
 </body>
 </html>

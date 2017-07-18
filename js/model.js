@@ -21,7 +21,7 @@ var dataModel = function(myController) {
 	}
 	
 	this.addUnitContainer = function(sector) {
-		this.unitContainers.push(new UnitContainer(sector));
+		this.unitContainers.push(new unitContainer(sector));
 	}
 	
 	this.sectors = [];

@@ -119,7 +119,7 @@ var mapView = function(myController) {
 		};
 	};
 	
-	this.listUnits = function(UnitContainer unitContainer, windowID) {
+	this.listUnits = function(uc, windowID) {
 		result = "<form>";
 		result += "</form>";
 		$(windowID).html(result);
