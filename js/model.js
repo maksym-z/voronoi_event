@@ -8,10 +8,6 @@ var dataModel = function(myController) {
 		this.unitContainer = new unitContainer();
 	}
 	
-	var unitContainer = function() {
-		
-	}
-	
 	var vehicle = function(classname, x, y) {
 		this.classname = classname;
 		this.x = x;
@@ -24,5 +20,10 @@ var dataModel = function(myController) {
 		this.sectors.push(newSector);
 	}
 	
+	this.addUnitContainer = function(sector) {
+		this.unitContainers.push(new UnitContainer(sector));
+	}
+	
 	this.sectors = [];
+	this.unitContainers = [];
 }

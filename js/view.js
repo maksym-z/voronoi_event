@@ -118,4 +118,10 @@ var mapView = function(myController) {
 			myController.selectSector(this.highlightedPolygon.index);
 		};
 	};
+	
+	this.listUnits = function(UnitContainer unitContainer, windowID) {
+		result = "<form>";
+		result += "</form>";
+		$(windowID).html(result);
+	};
 };
